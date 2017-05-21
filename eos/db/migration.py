@@ -52,7 +52,7 @@ def update(saveddata_engine):
             pyfalog.info("Upgrading database from version {0} to {1}", dbVersion, dbVersion + 1)
         except:
             upgrade_class = None
-            pyfalog.info("No updates found from version {0} to {1}", dbVersion, dbVersion + 1)
+            pyfalog.debug("No updates found from version {0} to {1}", dbVersion, dbVersion + 1)
             break
 
         # Automatically backup database
