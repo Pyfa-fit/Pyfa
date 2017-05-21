@@ -43,7 +43,7 @@ def update(saveddata_engine):
     pyfalog.info("Database upgrade in progress.")
     dbVersion = True
 
-    while dbVersion:
+    while dbVersion >= 0:
         dbVersion = getVersion(saveddata_engine)
 
         current_upgrade = "upgrade" + str(dbVersion + 1)
