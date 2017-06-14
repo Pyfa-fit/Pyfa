@@ -195,7 +195,7 @@ class ResourcesViewFull(StatsView):
                 gauge.SetMinSize(bar_size)
 
                 # Too large of a font will cause issuses with size and fit, so don't display extra info
-                if 10 < Fonts.getFont("font_standard"):
+                if 10 < getattr(Fonts.getFont("font_standard"), "PointSize", 9):
                     gauge.SetFractionDigits(0)
                 else:
                     gauge.SetFractionDigits(1)

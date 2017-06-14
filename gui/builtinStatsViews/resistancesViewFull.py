@@ -150,7 +150,7 @@ class ResistancesViewFull(StatsView):
                 lbl.SetBarGradient()
 
                 # Too large of a font will cause issuses with size and fit, so don't display extra info
-                if 10 < Fonts.getFont("font_standard"):
+                if 10 < getattr(Fonts.getFont("font_standard"), "PointSize", 9):
                     lbl.SetFractionDigits(0)
                 else:
                     lbl.SetFractionDigits(1)

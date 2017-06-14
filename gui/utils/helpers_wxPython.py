@@ -142,11 +142,10 @@ class Frame(object):
         return color
 
     @staticmethod
-    def getBackgroundColorOffset():
+    def getBackgroundColorOffset(offsetby=.1, reverse=False):
         general_settings = GeneralSettings.getInstance()
         color = Frame.ColorParser(general_settings.get('colorBackground'), 'LIGHT_GREY')
-
-        color = colorUtils.GetSuitableColor(color, 0.1)
+        color = colorUtils.GetSuitableColor(color, offsetby, reverse)
 
         return color
 

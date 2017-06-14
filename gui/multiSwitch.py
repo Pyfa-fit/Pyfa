@@ -19,13 +19,11 @@
 
 import gui.builtinViews.emptyView
 from gui.chromeTabs import PFNotebook
-from gui.utils.helpers_wxPython import Frame
 
 
 class MultiSwitch(PFNotebook):
     def __init__(self, parent):
         PFNotebook.__init__(self, parent)
-        self.SetBackgroundColour(Frame.getBackgroundColor())
         # self.AddPage() # now handled by mainFrame
         self.handlers = handlers = []
         for tab_type in TabSpawner.tabTypes:

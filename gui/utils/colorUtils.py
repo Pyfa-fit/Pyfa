@@ -52,15 +52,21 @@ def GetBrightnessO2(color):
     return math.sqrt(0.241 * r * r + 0.691 * g * g + 0.068 * b * b)
 
 
-def GetSuitableColor(color, factor):
+def GetSuitableColor(color, factor, reverse=False):
     # Calculates a suitable color based on original color (wx.Colour), its brightness, a factor=[0,1] (darken/brighten by factor depending on calculated brightness)
 
     brightness = GetBrightnessO1(color)
 
     if brightness > 129:
-        return DarkenColor(color, factor)
+        if reverse:
+            return BrightenColor(color, factor)
+        else:
+            return DarkenColor(color, factor)
     else:
-        return BrightenColor(color, factor)
+        if reverse:
+            return DarkenColor(color, factor)
+        else:
+            return BrightenColor(color, factor)
 
 
 def CalculateTransitionColor(startColor, endColor, delta):

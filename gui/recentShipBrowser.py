@@ -1265,7 +1265,7 @@ class FitItem(SFItem.SFBrowserItem):
         pfdate = drawUtils.GetPartialText(mdc, fitLocalDate,
                                           self.toolbarx - self.textStartx - self.padding * 2 - self.thoverw)
 
-        if Fonts.getFont("font_standard") < 13:
+        if getattr(Fonts.getFont("font_standard"), "PointSize", 9) < 13:
             # Too large of a font will cause issuses with size and fit, so don't display extra info
             mdc.DrawText(pfdate, self.textStartx, self.timestampy)
 
@@ -1319,7 +1319,7 @@ class FitItem(SFItem.SFBrowserItem):
     def RenderBackground(self):
         rect = self.GetRect()
 
-        windowColor = Frame.getBackgroundColor()
+        windowColor = Frame.getBackgroundColorOffset(.2, True)
 
         # activeFitID = self.mainFrame.getActiveFit()
         state = self.GetState()

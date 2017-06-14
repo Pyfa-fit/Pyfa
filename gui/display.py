@@ -34,7 +34,7 @@ class Display(wx.ListCtrl):
         wx.ListCtrl.__init__(self, parent, size=size, style=wx.LC_REPORT | style)
 
         self.SetFont(Fonts.getFont("font_standard"))
-        self.SetBackgroundColour(Frame.getBackgroundColor())
+        self.SetBackgroundColour(Frame.getBackgroundColorOffset(.2, True))
         self.SetForegroundColour(Frame.getForegroundColor())
 
         self.imageList = CachingImageList(16, 16)

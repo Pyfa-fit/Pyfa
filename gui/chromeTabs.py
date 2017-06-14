@@ -107,8 +107,6 @@ class PFNotebook(wx.Panel):
 
         wx.Panel.__init__(self, parent, wx.ID_ANY, size=(-1, -1))
 
-        self.SetBackgroundColour(Frame.getBackgroundColor())
-
         self.pages = []
         self.activePage = None
 
@@ -123,8 +121,6 @@ class PFNotebook(wx.Panel):
 
         contentSizer = wx.BoxSizer(wx.VERTICAL)
         self.pageContainer = wx.Panel(self, style=style)
-        self.pageContainer.SetBackgroundColour(Frame.getBackgroundColor())
-        self.pageContainer.SetForegroundColour(Frame.getForegroundColor())
         contentSizer.Add(self.pageContainer, 1, wx.EXPAND, 5)
 
         mainSizer.Add(tabsSizer, 0, wx.EXPAND, 5)
@@ -226,14 +222,9 @@ class PFNotebook(wx.Panel):
             tabWnd = wx.Panel(self)
 
         self.SetFont(Fonts.getFont("font_standard"))
-        self.SetBackgroundColour(Frame.getBackgroundColor())
-        self.SetForegroundColour(Frame.getForegroundColor())
 
         tabWnd.Reparent(self.pageContainer)
-
-        tabWnd.SetBackgroundColour(Frame.getBackgroundColor())
-        tabWnd.SetForegroundColour(Frame.getForegroundColor())
-        self.pageContainer.SetBackgroundColour(Frame.getBackgroundColor())
+        self.pageContainer.SetBackgroundColour(Frame.getBackgroundColorOffset(.2, True))
         self.pageContainer.SetForegroundColour(Frame.getForegroundColor())
 
         self.pageContainer.Layout()
@@ -241,11 +232,8 @@ class PFNotebook(wx.Panel):
         self.pages.append(tabWnd)
         self.tabsContainer.AddTab(tabTitle, tabImage, showClose)
 
-        self.tabsContainer.SetBackgroundColour(Frame.getBackgroundColor())
-        self.tabsContainer.SetForegroundColour(Frame.getForegroundColor())
-
         self.activePage = tabWnd
-        self.activePage.SetBackgroundColour(Frame.getBackgroundColor())
+        self.activePage.SetBackgroundColour(Frame.getBackgroundColorOffset(.2, True))
         self.activePage.SetForegroundColour(Frame.getForegroundColor())
 
         self.ShowActive(True)
@@ -1384,7 +1372,7 @@ class PFNotebookPagePreview(wx.Frame):
         wx.Frame.__init__(
                 self,
                 parent,
-                init_id=wx.ID_ANY,
+                id=wx.ID_ANY,
                 title=wx.EmptyString,
                 pos=pos,
                 size=wx.DefaultSize,

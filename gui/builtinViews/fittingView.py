@@ -665,8 +665,7 @@ class FittingView(d.Display):
             slotMap[slot] = fit.getSlotsFree(slot) < 0
 
         for i, mod in enumerate(self.mods):
-            # self.SetItemBackgroundColour(i, self.GetBackgroundColour())
-            self.SetItemBackgroundColour(i, Frame.getBackgroundColor())
+            self.SetItemBackgroundColour(i, Frame.getBackgroundColorOffset(.2, True))
 
             #  only consider changing color if we're dealing with a Module
             if isinstance(mod, Module):

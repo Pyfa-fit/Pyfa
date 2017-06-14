@@ -165,7 +165,7 @@ class FirepowerViewFull(StatsView):
             value = value() if fit is not None else 0
             value = value if value is not None else 0
             if self._cachedValues[counter] != value:
-                if 10 < Fonts.getFont("font_standard"):
+                if 10 < getattr(Fonts.getFont("font_standard"), "PointSize", 9):
                     valueStr = formatAmount(value, 1, lowest, highest)
                 else:
                     valueStr = formatAmount(value, prec, lowest, highest)

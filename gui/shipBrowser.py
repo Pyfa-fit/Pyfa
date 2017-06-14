@@ -490,7 +490,7 @@ class NavigationPanel(SFItem.SFBrowserItem):
     def DrawItem(self, mdc):
         rect = self.GetRect()
 
-        windowColor = Frame.getBackgroundColor()
+        windowColor = Frame.getBackgroundColorOffset(.2, True)
         textColor = Frame.getForegroundColor()
         sepColor = colorUtils.GetSuitableColor(windowColor, 0.2)
 
@@ -974,8 +974,6 @@ class PFStaticText(wx.Panel):
     def __init__(self, parent, label=wx.EmptyString):
         wx.Panel.__init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition, size=parent.GetSize())
 
-        self.SetBackgroundColour(Frame.getBackgroundColor())
-
         mainSizer = wx.BoxSizer(wx.VERTICAL)
         text = wx.StaticText(self, wx.ID_ANY, label, wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE)
         text.Wrap(-1)
@@ -1345,7 +1343,7 @@ class ShipItem(SFItem.SFBrowserItem):
             fformat = "%d fits"
 
         mdc.SetFont(Fonts.getFont("font_standard"))
-        if Fonts.getFont("font_standard") < 13:
+        if getattr(Fonts.getFont("font_standard"), "PointSize", 9) < 13:
             # If the font is too big, we don't have room, so don't include this extra information
             mdc.DrawText(fformat % fittings if fittings > 0 else fformat, self.textStartx, self.fittingsy)
 
@@ -1897,7 +1895,7 @@ class FitItem(SFItem.SFBrowserItem):
         fitLocalDate = fitDate  # "%d/%02d/%02d %02d:%02d" % (fitDate[0], fitDate[1], fitDate[2], fitDate[3], fitDate[4])
         pfdate = drawUtils.GetPartialText(mdc, fitLocalDate, self.toolbarx - self.textStartx - self.padding * 2 - self.thoverw)
 
-        if Fonts.getFont("font_standard") < 13:
+        if getattr(Fonts.getFont("font_standard"), "PointSize", 9) < 13:
             # Too large of a font will cause issuses with size and fit, so don't display extra info
             mdc.DrawText(pfdate, self.textStartx, self.timestampy)
 
@@ -1962,7 +1960,7 @@ class FitItem(SFItem.SFBrowserItem):
     def RenderBackground(self):
         rect = self.GetRect()
 
-        windowColor = Frame.getBackgroundColor()
+        windowColor = Frame.getBackgroundColorOffset(.2, True)
 
         # activeFitID = self.mainFrame.getActiveFit()
         state = self.GetState()

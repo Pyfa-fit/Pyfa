@@ -62,9 +62,6 @@ class MarketBrowser(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
 
-        self.SetFont(Fonts.getFont("font_standard"))
-        self.SetBackgroundColour(Frame.getBackgroundColor())
-        self.SetForegroundColour(Frame.getForegroundColor())
         pyfalog.debug("Initialize marketBrowser")
         vbox = wx.BoxSizer(wx.VERTICAL)
         self.SetSizer(vbox)
@@ -146,7 +143,7 @@ class MarketTree(wx.TreeCtrl):
         wx.TreeCtrl.__init__(self, parent, style=wx.TR_DEFAULT_STYLE | wx.TR_HIDE_ROOT)
 
         self.SetFont(Fonts.getFont("font_standard"))
-        self.SetBackgroundColour(Frame.getBackgroundColor())
+        self.SetBackgroundColour(Frame.getBackgroundColorOffset(.2, True))
         self.SetForegroundColour(Frame.getForegroundColor())
         pyfalog.debug("Initialize marketTree")
         self.root = self.AddRoot("root")
