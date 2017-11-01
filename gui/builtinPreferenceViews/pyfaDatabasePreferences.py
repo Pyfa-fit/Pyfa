@@ -144,7 +144,7 @@ class PFDatabasePref(PreferenceView):
 
         delayTimer.Add(self.stUpdateThreads, 0, wx.ALL | wx.ALIGN_CENTER_VERTICAL, 5)
 
-        self.intDelay = IntCtrl(panel, max=50, limited=True)
+        self.intDelay = IntCtrl(panel, max=100, limited=True)
         delayTimer.Add(self.intDelay, 0, wx.ALL, 5)
 
         mainSizer.Add(delayTimer, 0, wx.ALL | wx.EXPAND, 0)
@@ -182,14 +182,16 @@ class PFDatabasePref(PreferenceView):
             clearPrices()
 
     @staticmethod
-    def UpdateDatabase():
+    def UpdateDatabase(test):
         question = u"This will take a significant amount of time.  Once the update is complete, Pyfa will restart.\n" \
                    u"Pyfa will become unresponsive until the update is complete.  Would you like to proceed?"
         if wxHelpers.YesNoDialog(question, u"Confirm"):
-            loadDlg = wxHelpers.PopupDialog(None, "Updating...", "Updating database.\n\nPlease wait....")
-
+            loadDlg = wxHelpers.PopupDialog(None, "Updating... (1/2)", "Updating item types.\n\nPlease wait....")
             sESI = esiItems.getInstance()
             sESI.updateTypes()
+
+            loadDlg.Destroy()
+            loadDlg = wxHelpers.PopupDialog(None, "Updating... (2/2)", "Updating dogma stats.\n\nPlease wait....")
             sDogma = esiDogma.getInstance()
             sDogma.updateAllDogmaTables()
 

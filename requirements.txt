@@ -4,7 +4,7 @@ python-dateutil
 urllib3
 requests == 2.11.1
 sqlalchemy >= 1.0.5
-EVE_Gnosis
+EVE_Gnosis >= 2017.6.27
 multiprocess >= 0.70.5
 pyswagger
 six >= 1.10.0

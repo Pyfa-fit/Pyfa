@@ -1,0 +1,17 @@
+doc-warnings: true
+test-warnings: true
+strictness: veryhigh
+max-line-length: 165
+autodetect: true
+requirements:
+  - requirements.txt
+  - requirements_build.txt
+  - requirements_test.txt
+ignore-paths:
+  - scripts
+  - dist_assets
+  - imgs
+ignore-patterns:
+  - setup_.*\.py$
+python-targets:
+  - 2

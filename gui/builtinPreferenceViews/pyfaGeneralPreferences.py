@@ -127,9 +127,6 @@ class PFGeneralPref(PreferenceView):
         self.m_staticline = wx.StaticLine(panel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LI_HORIZONTAL)
         mainSizer.Add(self.m_staticline, 0, wx.EXPAND | wx.TOP | wx.BOTTOM, 5)
 
-        self.m_staticline = wx.StaticLine(panel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.LI_HORIZONTAL)
-        mainSizer.Add(self.m_staticline, 0, wx.EXPAND | wx.TOP | wx.BOTTOM, 5)
-
         btnSizer = wx.BoxSizer(wx.HORIZONTAL)
         btnSizer.AddSpacer((0, 0), 1, wx.EXPAND, 5)
 

@@ -25,7 +25,7 @@ debug = False
 saveInRoot = False
 
 # Version data
-version = "2017.06.08"
+version = "2017.06.26"
 if hasattr(sys, 'frozen'):
     tag = ""
 else:
